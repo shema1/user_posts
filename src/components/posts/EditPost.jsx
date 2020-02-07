@@ -2,23 +2,22 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
 class EditPost extends Component {
-  // state = {
-  //   title: "",
-  //   body: ""
-  // };
+  state = {
+    title: "",
+    body: ""
+  };
 
-  constructor(props){
-    super(props)
-    this.state = {
-      title: props.curentPost.title,
-        body: props.curentPost.body
+  componentDidUpdate(prevProps) {
+    if (
+      prevProps.curentPost.title !== this.props.curentPost.title ||
+      prevProps.curentPost.body !== this.props.curentPost.body
+    ) {
+      this.setState({
+        title: this.props.curentPost.title,
+        body: this.props.curentPost.body
+      });
     }
-  }
-  componentDidMount() {
-    this.setState({
-      title: this.props.curentPost.title,
-      body: this.props.curentPost.body
-    });
+    console.log("somesing change");
   }
 
   handleChange = event => {
@@ -57,20 +56,24 @@ class EditPost extends Component {
             rows="10"
             cols="45"
             name="body"
-            value={this.props.curentPost.body}
+            value={this.state.body}
             onChange={() => this.handleChange(event)}
           />
           <div className="control-btn">
-            <button
-              className="btn update__btn"
-              onClick={() => this.handlePostUpdate(this.props.curentPost.id)}
-            >
-              update
-            </button>
+            <Link to="posts">
+              <button
+                className="btn update__btn"
+                onClick={() => this.handlePostUpdate(this.props.curentPost.id)}
+              >
+                update
+              </button>
+            </Link>
             <Link to="posts">
               <button
                 className="btn delete__btn"
-                onClick={() => this.props.onDeletePost(this.props.curentPost.id)}
+                onClick={() =>
+                  this.props.onDeletePost(this.props.curentPost.id)
+                }
               >
                 delete
               </button>

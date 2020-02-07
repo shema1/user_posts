@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import User from './User'
 
 const Users =({users,onReturnId})=> {
@@ -7,7 +7,6 @@ const Users =({users,onReturnId})=> {
      <div className="main">
          <h1 className="title">users</h1>
          <ul className ="list">
-
              {users.map(user =>(
                 <User key={user.id} userParam={user} onReturnId={onReturnId}/> 
              ))}

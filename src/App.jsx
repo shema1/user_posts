@@ -16,7 +16,6 @@ class App extends Component {
   };
 
   componentDidMount() {
-    // this.fetchUsers();
     fetchUsers().then(user =>
       this.setState({
         users: user
