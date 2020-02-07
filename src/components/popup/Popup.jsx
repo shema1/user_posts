@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { createPost } from "../../gateway";
 
 class Popup extends Component {
   state = {
@@ -13,16 +14,22 @@ class Popup extends Component {
     });
   };
 
-  handlePostCreate=()=>{
-    this.props.onCreatePost(this.state.title, this.state.body)
+ handleCreatePost = () => {
+    const newPost = {
+      title:this.state.title,
+      body:this.state.title
+    };
     this.setState({
-        title: "",
-        body: ""
-    })
-  }
+            title: "",
+            body: ""
+        })
+    this.props.handleClosePopup()
+    createPost(newPost)
+    console.log(newPost);
+  };
 
   render() {
-    const { isOpen, handleClosePopup, } = this.props;
+    const { isOpen, handleClosePopup } = this.props;
     if (!isOpen) return null;
     return (
       <div className="popup">
@@ -48,7 +55,7 @@ class Popup extends Component {
               onChange={() => this.handleChange(event)}
             />
             <div className="control-btn">
-              <button className="btn update__btn" onClick={this.handlePostCreate}>ADD</button>
+              <button className="btn update__btn" onClick={this.handleCreatePost}>ADD</button>
             </div>
           </div>
         </div>

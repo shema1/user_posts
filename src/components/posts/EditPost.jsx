@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { updatePost, deletePost,fetchUserPost } from "../../gateway";
+import Loader from "../loader/Loader"
 
 class EditPost extends Component {
   state = {
@@ -7,18 +9,28 @@ class EditPost extends Component {
     body: ""
   };
 
-  componentDidUpdate(prevProps) {
-    if (
-      prevProps.curentPost.title !== this.props.curentPost.title ||
-      prevProps.curentPost.body !== this.props.curentPost.body
-    ) {
+  componentDidMount() {
+    fetchUserPost(this.props.curentId).then(post =>
       this.setState({
-        title: this.props.curentPost.title,
-        body: this.props.curentPost.body
-      });
-    }
-    console.log("somesing change");
+        title: post.title,
+        body: post.body
+      })
+    );
   }
+
+  // componentDidUpdate(prevState, prevProps) {
+  //   if (
+  //     prevState.title != this.state.title ||
+  //     prevState.body != this.state.body ||
+  //     prevProps.curentId != this.props.curentId
+  //   ) {
+  //     this.setState({
+  //       title: this.props.curentPost.title,
+  //       body: this.props.curentPost.body
+  //     });
+  //   }
+  //   console.log("somesing change");
+  // }
 
   handleChange = event => {
     const { name, value } = event.target;
@@ -27,16 +39,27 @@ class EditPost extends Component {
     });
   };
 
-  handlePostUpdate = id => {
-    this.props.onUpdatePost(id, this.state.title, this.state.body);
+  handlePostUpdate = () => {
+    const newPost = {
+      title: this.state.title,
+      body: this.state.body
+    };
+
+    updatePost(this.props.curentId, newPost);
     this.setState({
       title: "",
       body: ""
     });
   };
+
+  handleDeletePost = id => {
+    deletePost(id);
+  };
+
   render() {
     return (
       <div className="main">
+        {this.state.title ==""&& <Loader/>}
         <div className="header">
           <Link to="/posts">
             <i className="material-icons">arrow_back_ios</i>
@@ -63,7 +86,7 @@ class EditPost extends Component {
             <Link to="posts">
               <button
                 className="btn update__btn"
-                onClick={() => this.handlePostUpdate(this.props.curentPost.id)}
+                onClick={() => this.handlePostUpdate()}
               >
                 update
               </button>
@@ -72,7 +95,7 @@ class EditPost extends Component {
               <button
                 className="btn delete__btn"
                 onClick={() =>
-                  this.props.onDeletePost(this.props.curentPost.id)
+                  this.handleDeletePost()
                 }
               >
                 delete

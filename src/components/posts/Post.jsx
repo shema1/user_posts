@@ -1,16 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Post = ({ userPosts, handleGetSelectPost }) => {
+const Post = ({ userPosts, onReturnId }) => {
   return (
     <li className="list-item">
       <span className="list-item__post">
-        {userPosts.userId}-{userPosts.title}
+       {userPosts.title}
       </span>
       <Link to="/post">
         <button
           className="list-item__button"
-          onClick={() => handleGetSelectPost(userPosts.id)}
+          onClick={() =>onReturnId(userPosts.id)}
         >
           details
         </button>
