@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { updatePost, deletePost,fetchUserPost } from "../../gateway";
-import Loader from "../loader/Loader"
+import { updatePost, deletePost, fetchUserPost } from "../../gateway";
+import Loader from "../loader/Loader";
 
 class EditPost extends Component {
   state = {
@@ -17,20 +17,6 @@ class EditPost extends Component {
       })
     );
   }
-
-  // componentDidUpdate(prevState, prevProps) {
-  //   if (
-  //     prevState.title != this.state.title ||
-  //     prevState.body != this.state.body ||
-  //     prevProps.curentId != this.props.curentId
-  //   ) {
-  //     this.setState({
-  //       title: this.props.curentPost.title,
-  //       body: this.props.curentPost.body
-  //     });
-  //   }
-  //   console.log("somesing change");
-  // }
 
   handleChange = event => {
     const { name, value } = event.target;
@@ -59,7 +45,7 @@ class EditPost extends Component {
   render() {
     return (
       <div className="main">
-        {this.state.title ==""&& <Loader/>}
+        {this.state.title == "" && <Loader />}
         <div className="header">
           <Link to="/posts">
             <i className="material-icons">arrow_back_ios</i>
@@ -94,9 +80,7 @@ class EditPost extends Component {
             <Link to="posts">
               <button
                 className="btn delete__btn"
-                onClick={() =>
-                  this.handleDeletePost()
-                }
+                onClick={() => this.handleDeletePost()}
               >
                 delete
               </button>

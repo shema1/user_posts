@@ -2,33 +2,16 @@ import React, { Component } from "react";
 import Users from "./components/userList/Users";
 import Posts from "./components/posts/Posts";
 import EditPost from "./components/posts/EditPost";
-import Popup from "./components/popup/Popup";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import Loader from "./components/loader/Loader"
 
 class App extends Component {
   state = {
-    isOpen: false,
-    curentId:''
+    curentId: ""
   };
 
- 
   handleGetIdPost = id => {
-      this.setState({
-        curentId: id
-      })
-  };
-
-  handleOpenPopup = () => {
     this.setState({
-      isOpen: true
-    });
-  };
-
-  handleClosePopup = () => {
-    this.setState({
-      isOpen: false,
-      isEdit: false
+      curentId: id
     });
   };
 
@@ -53,13 +36,6 @@ class App extends Component {
             />
           </Route>
         </Switch>
-        {this.state.isOpen && (
-          <Popup
-            isOpen={this.state.isOpen}
-            handleClosePopup={this.handleClosePopup}
-            onCreatePost={this.onCreatePost}
-          />
-        )}
       </BrowserRouter>
     );
   }

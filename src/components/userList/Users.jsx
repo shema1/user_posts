@@ -1,24 +1,11 @@
 import React, { Component } from "react";
 import User from "./User";
 import { fetchUsers } from "../../gateway";
-import Loader from "../loader/Loader"
+import Loader from "../loader/Loader";
 class Users extends Component {
-  // отримати всіх юзерів
-  // https://jsonplaceholder.typicode.com/users
-
   state = {
     users: ""
   };
-
-//   componentDidUpdate(prevState) {
-//     if (prevState.users !== this.state.users) {
-//       fetchUsers().then(user =>
-//         this.setState({
-//           users: user
-//         })
-//       );
-//     }
-//   }
 
   componentDidMount() {
     fetchUsers().then(user =>
@@ -33,7 +20,7 @@ class Users extends Component {
       <div className="main">
         <h1 className="title">users</h1>
         <ul className="list">
-           {this.state.users ==""&& <Loader/>}
+          {this.state.users == "" && <Loader />}
           {this.state.users != "" &&
             this.state.users.map(user => (
               <User

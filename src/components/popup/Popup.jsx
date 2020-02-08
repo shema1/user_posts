@@ -14,17 +14,17 @@ class Popup extends Component {
     });
   };
 
- handleCreatePost = () => {
+  handleCreatePost = () => {
     const newPost = {
-      title:this.state.title,
-      body:this.state.title
+      title: this.state.title,
+      body: this.state.title
     };
     this.setState({
-            title: "",
-            body: ""
-        })
-    this.props.handleClosePopup()
-    createPost(newPost)
+      title: "",
+      body: ""
+    });
+    this.props.handleClosePopup();
+    createPost(newPost);
     console.log(newPost);
   };
 
@@ -55,7 +55,12 @@ class Popup extends Component {
               onChange={() => this.handleChange(event)}
             />
             <div className="control-btn">
-              <button className="btn update__btn" onClick={this.handleCreatePost}>ADD</button>
+              <button
+                className="btn update__btn"
+                onClick={this.handleCreatePost}
+              >
+                ADD
+              </button>
             </div>
           </div>
         </div>

@@ -1,35 +1,32 @@
-
-
-.main{
+.main {
   display: flex;
-flex-direction: column;
-background-color: coral;
-border-radius: 8px;
-padding: 8px;
-max-width: 400px;
-margin: auto;
+  flex-direction: column;
+  background-color: coral;
+  border-radius: 8px;
+  padding: 8px;
+  max-width: 400px;
+  margin: auto;
 }
 
-
-.popup{
- position: fixed;
- left: 41%;
- top: 20%;
- z-index: 100;
+.popup {
+  position: fixed;
+  left: 41%;
+  top: 20%;
+  z-index: 100;
 }
-.title{
+.title {
   text-transform: uppercase;
   margin: 0 auto;
   margin-bottom: 15px;
 }
 
-.list{
+.list {
   list-style-type: none;
   margin: 0;
   padding: 0;
 }
 
-.list-item{
+.list-item {
   background-color: wheat;
   border-radius: 8px;
   margin-bottom: 8px;
@@ -38,63 +35,59 @@ margin: auto;
   justify-content: space-between;
   padding: 5px 10px;
 
-
-  &__button{
-      background-color: rgb(139, 130, 130);
-      border: none;
-      padding: 8px;
-      border-radius: 8px;
-      width: 150px;
+  &__button {
+    background-color: rgb(139, 130, 130);
+    border: none;
+    padding: 8px;
+    border-radius: 8px;
+    width: 150px;
   }
 }
 
-.btn{
+.btn {
   border: none;
   padding: 8px;
   border-radius: 8px;
   width: 150px;
 }
 
-.edit-post{
+.edit-post {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.control-btn{
+.control-btn {
   margin-top: 15px;
   display: flex;
   justify-content: space-between;
 }
 
-.update__btn{
+.update__btn {
   color: #fff;
   background-color: green;
 }
 
-.delete__btn{
+.delete__btn {
   background-color: red;
   color: #fff;
 }
 
-.btn__add{
+.btn__add {
   height: 35px;
   width: 100px;
 }
 
-.post-field{
-  resize: none
+.post-field {
+  resize: none;
 }
 
-.header{
+.header {
   display: flex;
 }
 
-.btn-close{
+.btn-close {
   background-color: transparent;
   border: none;
   outline: none;
 }
-
-
-
